@@ -1,22 +1,22 @@
 # Installing Linux on an Asus Chromebook Flip C100PA
 Documentation of my journey into learning more about Linux and Repurposing a 10 year old almost obsolete hardware by installing and configuring a different operating system for it.
 
-::Distros I've tried::
-Arch Linux 32Bit for ARM Systems like this device:
+## Distros I've tried
+### Arch Linux 32Bit for ARM Systems like this device:
 - Current(July 2026) official instruction from Arch Linux Website works(only as USB Mode) only if you change the main instruction set's used 'http://os.archlinuxarm.org/os/ArchLinuxARM-veyron-latest.tar.gz' to 'http://os.archlinuxarm.org/os/ArchLinuxARM-armv7-chromebook-latest.tar.gz'
 - Haven't tried modifying the bios beforehand in conjunction with the original .tar.gz or any tar.gz for that matter.
 - Can read all the raw notes in this repo's only .txt file to see stuff I've tried.
 ::Used the Arch Linux Live USB to install these to the internal storage::
-PrawnOS:
+### PrawnOS:
 - Works booted from internal storage, not tested much, opted to use the next in this list instead.
-PostMarketOS:
+### PostMarketOS:
 - What I ended up using instead, boots from internal storage.
 - Works great out of first boot, no need to configure the volume adjustment toast/dunst-notifications, all keys on keyboard working as supposed to be with the device's defaults.
 - No need to mess around trying to fix the audio routing, works out-of-the-box or rather out of fresh install.
 - No available pre-built image online so I used the website's instruction on building the system image file using the Live USB Arch Linux aforementioned above.
 - The above had me running 'install pmbootstrap command' using my Linux's package manager then 'pmbootstrap init' then mostly using defaults by just pressing enter key then selecting the 'community build' instead of the 'edge' or bleeding edge experimental build, then choosing xfce4 as the display manager then the rest are mostly defaults. You don't need to specify to have 'sudo' installed as it's pre-packaged with it and would rather not put any in the extras-to-install asked. Once the image is built use 'pmbootstrap install --no-cgpt --sdcard /dev/mmcblk0' to install into the internal storage. Check if it finishes with 'DONE!', if it doesn't then just keep repeating running that command until it does, at first execution it's slow because it has to download some stuff but subsequent executions will be faster as it only needs to verify that the files are already there and not corrupted to skip trying to download them again.
 
-[Once the Operating System or OS is installed and tested to be running from internal storage]
+## Once the Operating System or OS is installed and tested to be running from internal storage
 For simplicity's sake since this the editor I been using a lot in Linux and we'll be mentioned hereon out, you can use whichever you want:
 'sudo apk add nano'
 It's also a good habit to read through the entire instruction set such as this first before actually executing/doing them one by one, and because of that I purposely hid the way to save edits in nano somewhere down this guide :D
@@ -29,7 +29,7 @@ Install the ChromeOS Futility package:
 Modify the bios flags to shorten the booting time's default ChromeOS' Developer White Screen where you used to have to press 'ctrl+d' for internal storage boot or 'ctrl+u' for usb boot.
 And turn that into taking only 2 seconds instead of 30 seconds. Also disabling the spacebar function on that screen to 'Re-enable OS Verification' so that your Linux Installation doesn't get bricked.
 And lastly forcing the device to be always in dev_mode, totally eliminating the need to press 'ctrl+d' everytime to boot into the Linux OS.
-::How To Modify the BIOS Flags::
+## How To Modify the BIOS Flags
 This is specifically an old Chromebook where in those years they used a ground screw as the Firmware/Bios Write-Protection Mechanism, so you have to open the chassis and remove that first.
 In newer models, it seems to be directly attached to the battery's power management board so for that, you might have to remove the battery, I am not sure with this one so better look at the link below:
 https://docs.mrchromebox.tech/docs/firmware/wp/disabling.html <- this should serve as a better source of information on how to do this whole section.
@@ -45,7 +45,7 @@ The way those flags identifiers are structed is in a way that you add up all the
 'flashrom -w gbb.bin' <- this flashes/writes your modified BIOS/FW file into the one currently installed, overwriting it. Overwriting is a computer term that just means whatever was in it is now replaced with what is just placed in it.
 Can reboot the system now.
 
-[The Hard Shutdown Fix]
+## The Hard Shutdown Fix
 Somehow this specific model has problems fully shutting down. The OS does shutdown but the Disk-Read-LED or light on the side doesn't turn off meaning the device is not really fully turned off yet.
 This can cause heat build up as it is stored in a bag as it is if forgotten to long-press the power button to do a hard shutdown shouldn't be done everytime.
 I've tried ACPID but that doesn't work since this installation have nowhere to hook that into.
