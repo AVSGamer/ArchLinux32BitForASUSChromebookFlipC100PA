@@ -6,6 +6,7 @@ Documentation of my journey into learning more about Linux and Repurposing a 10 
 - Current(July 2026) official instruction from Arch Linux Website works(only as USB Mode) only if you change the main instruction set's used 'http://os.archlinuxarm.org/os/ArchLinuxARM-veyron-latest.tar.gz' to 'http://os.archlinuxarm.org/os/ArchLinuxARM-armv7-chromebook-latest.tar.gz'
 - Haven't tried modifying the bios beforehand in conjunction with the original .tar.gz or any tar.gz for that matter.
 - Can read all the raw notes in this repo's only .txt file to see stuff I've tried.
+- Had to configure the keyboard shortcuts + audio routing + volume changes notifications UI/UX myself and it was messy work.. Got them to work still and it's in the Raw Notes text file.
 ::Used the Arch Linux Live USB to install these to the internal storage::
 ### PrawnOS:
 - Works booted from internal storage, not tested much, opted to use the next in this list instead.
